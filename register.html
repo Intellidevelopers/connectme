@@ -12,6 +12,11 @@
     <title>Register | ConnectMe | Chat Application HTML Template</title>
     <link rel="stylesheet" href="assets/css/bundle1c4a.css?v131">
     <link rel="stylesheet" href="assets/css/app1c4a.css?v131">
+    <style>
+        .error {
+          color: red;
+        }
+      </style>
 </head>
 
 <body class="tyn-body">
@@ -31,7 +36,7 @@
                         </div>
                         <div class="card border-0">
                             <div class="p-4">
-                                <form id="signUp-form">
+                                <form id="signUp-form" onsubmit="return validateForm()">
                                     <h3>Create Account</h3>
                                 <div class="row g-3 gx-4">
                                     <div class="col-sm-6">
@@ -68,8 +73,9 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="muteFor" id="privacy-term-agree">
+                                            <input class="form-check-input" type="checkbox" name="termsCheckbox" id="privacy-term-agree" required>
                                             <label class="form-check-label" for="privacy-term-agree"> I agree with <a href="#">privacy policy &amp; terms</a>
+                                                <span id="termsError" class="error"></span>
                                             </label>
                                         </div>
                                     </div>
