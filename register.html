@@ -36,7 +36,7 @@
                         </div>
                         <div class="card border-0">
                             <div class="p-4">
-                                <form id="signUp-form" onsubmit="return validateForm()">
+                                <form id="signUp-form" onsubmit="return handleSignUp()">
                                     <h3>Create Account</h3>
                                 <div class="row g-3 gx-4">
                                     <div class="col-sm-6">
@@ -80,7 +80,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100" type="submit" id="Register">Account Register</button>
+                                        <button class="btn btn-primary w-100" onclick="handleSignUp()" type="submit" id="Register">Account Register</button>
                                     </div>
                                 </div><!-- .row -->
                             </div>
