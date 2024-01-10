@@ -442,7 +442,7 @@
                                     <div class="tyn-media-col">
                                         <div class="tyn-media-row">
                                             <h4 class="name" id="welcomeMessage"> </h4>
-                                            <span class="username" id="Useremail">@</span>
+                                            <span class="username" id="emailDisplay">@</span>
                                         </div>
                                         <div class="tyn-media-row has-dot-sap">
                                             <span class="content">287 Contacts</span>
@@ -1038,7 +1038,7 @@
           const emailLogin = user.email;
           
           document.getElementById('welcomeMessage').innerText = `${fullName}`;
-          document.getElementById('useremail').innerText = `${emailLogin}`;
+          document.getElementById('emailDisplay').innerText = `${emailLogin}`;
         }
       });
     });
