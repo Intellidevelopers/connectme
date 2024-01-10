@@ -222,11 +222,8 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
   import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"; 
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyC1kDtYIauw1KYF2OYK6zJBj_DtDxjuOWo",
     authDomain: "login-signup-authenticat-4fa75.firebaseapp.com",
@@ -239,87 +236,81 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app)
+  const auth = getAuth(app);
 
+  document.getElementById('signUp-form')
+    .addEventListener('submit', (e) => {
+      e.preventDefault();
 
-   document.getElementById('signUp-form')
-   .addEventListener('submit', (e) => {
-	  e.preventDefault();
+      let fullName = document.getElementById('full_name').value;
+      let emailLogin = document.getElementById('email_login').value;
+      let passwordLogin = document.getElementById('password_login').value;
+      let username = document.getElementById('user_name').value;
 
-	  let fullName = document.getElementById('full_name').value
-	  let emailLogin = document.getElementById('email_login').value
-	  let passwordLogin = document.getElementById('password_login').value
-	  let username = document.getElementById('user_name').value
-	  
+      // Form Authentication
+      if (fullName.trim() === '' || emailLogin.trim() === '' || passwordLogin.trim() === '' || username.trim() === '') {
+        swal({
+          text: 'All Inputs Field are required',
+          icon: 'warning'
+        });
+      } else if (passwordLogin.length < 6) {
+        swal({
+          text: 'Password must be at least 6 characters',
+          icon: 'warning'
+        });
+      } else {
+        createUserWithEmailAndPassword(auth, emailLogin, passwordLogin)
+          .then((userCredential) => {
+            if (userCredential) {
+              swal({
+                title: 'Good Job',
+                text: 'Account created successfully',
+                icon: 'success'
+              }).then(value => {
+                if (value) {
+                  window.location.replace('index.html');
+                }
+              });
 
-	  // Form Authentication
-	  if(fullName.trim() === '' || emailLogin.trim() === '' || passwordLogin.trim() === '' || username.trim() === '' ){
-		 swal({
-		  text: 'All Inputs Field are required',
-		  icon: 'warning'
-		 })
-	  }
-	   else if(passwordLogin.length < 6)
-	  {
-		// Popout this if the password length is less than six
-		swal({
-		  text: 'Password must be atleast 6',
-		  icon: 'warning'
-		})
-	  } 
-	  else 
-	  {
-		createUserWithEmailAndPassword(auth, emailLogin, passwordLogin)
-	  .then((userCredential) => {
+              const user = userCredential.user;
 
-		if(userCredential){
-		  swal({
-			title: 'Good Job',
-			text: 'Account created successfully',
-			icon: 'success'
-		  })
-		   .then(value => {
-			if(value){
-			   window.location.replace('index.html')
-			}
-		   })
-
-		   
-		  // Set the Display Name for the user if the User Credentials
-		  // Is true
-			const user = userCredential.user
-
-			if(user){
-			  updateProfile(user, {
-				displayName: `${fullName}`
-			  })
-		}
-		}
-		
-		
-	  }).catch((err) => {
-			  if (err.code === 'auth/email-already-in-use') {
-			  swal({
-				title: 'Error',
-				text: 'The email address is already in use',
-				icon: 'error'
-			  });
-			} else if (err.code === 'auth/invalid-email') {
-			  swal({
-				title: 'Error',
-				text: 'Invalid email address',
-				icon: 'error'
-			  });
-			} else {
-			  swal({
-				title: 'Error',
-				text: `${err.message}`,
-				icon: 'error'
-			  });
-			}
-	  })
-	  }
-   })
+              if (user) {
+                // Update the user's display name and username
+                updateProfile(user, {
+                  displayName: fullName,
+                  username: username  // Add this line to save the username
+                }).then(() => {
+                  // Continue with other logic or redirection
+                }).catch((error) => {
+                  // Handle error if the profile update fails
+                });
+              }
+            }
+          }).catch((err) => {
+            // Handle authentication errors
+            if (err.code === 'auth/email-already-in-use') {
+              swal({
+                title: 'Error',
+                text: 'The email address is already in use',
+                icon: 'error'
+              });
+            } else if (err.code === 'auth/invalid-email') {
+              swal({
+                title: 'Error',
+                text: 'Invalid email address',
+                icon: 'error'
+              });
+            } else {
+              swal({
+                title: 'Error',
+                text: `${err.message}`,
+                icon: 'error'
+              });
+            }
+          });
+      }
+    });
 </script>
+
 <!-- Mirrored from connectme-html.themeyn.com/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jan 2024 18:41:30 GMT -->
 </html>
