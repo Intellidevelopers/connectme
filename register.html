@@ -65,9 +65,9 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="repeat-password">Password Repeat</label>
+                                            <label class="form-label" for="repeat-password">Username</label>
                                             <div class="form-control-wrap">
-                                                <input type="password" class="form-control" id="password_login" placeholder="password again" required>
+                                                <input type="text" class="form-control" id="user_name" placeholder="@username" required>
                                             </div>
                                         </div>
                                     </div>
@@ -249,10 +249,11 @@
 	  let fullName = document.getElementById('full_name').value
 	  let emailLogin = document.getElementById('email_login').value
 	  let passwordLogin = document.getElementById('password_login').value
+	  let username = document.getElementById('user_name').value
 	  
 
 	  // Form Authentication
-	  if(fullName.trim() === '' || emailLogin.trim() === '' || passwordLogin.trim() === ''){
+	  if(fullName.trim() === '' || emailLogin.trim() === '' || passwordLogin.trim() === '' || username.trim() === '' ){
 		 swal({
 		  text: 'All Inputs Field are required',
 		  icon: 'warning'
