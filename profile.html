@@ -1034,7 +1034,9 @@
         if (user) {
           // User is logged in, display the full name on the homepage
           const fullName = user.displayName;
-          document.getElementById('welcomeMessage').innerText = `${fullName}!`;
+          const emailLogin = user.displayEmail;
+          document.getElementById('emailDisplay').innerText = `${emailLogin}`;
+          document.getElementById('welcomeMessage').innerText = `${fullName}`;
         }
       });
     });
