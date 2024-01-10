@@ -1035,9 +1035,8 @@
         if (user) {
           // User is logged in, display the full name on the homepage
           const fullName = user.displayName;
-          const emailLogin = user.email;
           const username = user.displayName;
-          document.getElementById('emailDisplay').innerText = `${emailLogin}`;
+          
           document.getElementById('welcomeMessage').innerText = `${fullName}`;
           document.getElementById('usernameDisplay').innerText = `${username}`;
         }
