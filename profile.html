@@ -340,7 +340,7 @@
                                         </div>
                                         <div class="tyn-media-col">
                                             <div class="tyn-media-row">
-                                                <h6 class="name">Marie George</h6>
+                                                <h6 class="name" id="welcome"> </h6>
                                                 <div class="indicator varified">
                                                     <!-- check-circle-fill -->
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
@@ -510,7 +510,7 @@
                                                             <div class="form-group">
                                                                 <label class="form-label d-flex" for="primaryEmail">Main Email <span class="small ms-2 text-success">Varified</span> <a href="#" class="link link-primary ms-auto">Add Email</a></label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="emailDisplay" disabled placeholder="Primary Email" value=" ">
+                                                                    <input type="text" class="form-control" id="welcome" disabled placeholder="Primary Email" value="adeagbo1@gmail.com">
                                                                 </div>
                                                                 <div class="tyn-subtext mt-2">You need to have at least one email connected with your account</div>
                                                             </div>
@@ -1039,6 +1039,7 @@
           
           document.getElementById('welcomeMessage').innerText = `${fullName}`;
           document.getElementById('emailDisplay').innerText = `${emailLogin}`;
+          document.getElementById('welcome').innerHTML = `${fullName}`;
         }
       });
     });
